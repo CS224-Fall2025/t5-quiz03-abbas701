@@ -28,7 +28,7 @@ public:
     Staff(string n, double s) : Employee(n, s){};
     void displayInfo() override
     {
-        cout << "Name: " << name << " (Staff), Salary: " << salary;
+        cout << "Name: " << name << " (Staff), Salary: " << salary<<endl;
     }
 };
 
@@ -41,7 +41,7 @@ public:
     Faculty(string n, double s) : Employee(n, s){};
     void displayInfo() override
     {
-        cout << "Name: " << name << " (Faculty), Salary: " << salary;
+        cout << "Name: " << name << " (Faculty), Salary: " << salary<<endl;
     }
 };
 int Employee::employeeCount = 0;
@@ -56,16 +56,18 @@ int main()
 
     for (int i = 0; i < num; i++)
     {
-        cin >> position;
         cin >> name;
+        cin >> position;
         cin >> salary;
         if (position == "Staff")
         {
-            *test[i] = Staff(name, salary);
+            Staff *staff=new Staff(name, salary);
+             test[i] = staff;
         }
         else
         {
-            *test[i] = Faculty(name, salary);
+            Faculty *faculty=new Faculty(name, salary);
+             test[i] = faculty;
         }
     }
     for (int i = 0; i < num; i++)
